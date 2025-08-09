@@ -13,9 +13,15 @@ class ListController extends Controller
     {
         $vars = $request->validated();
 
-        $result = Person::query()->get();
+        $total = Person::query()->count();
+
+        $result = Person::query()
+            ->offset($vars['start'] ?? 0)
+            ->limit($vars['count'] ?? 10)
+            ->get(['id', 'first_name', 'last_name', 'created_at', 'updated_at']);
 
         return [
+            'total' => $total,
             'items' => $result,
         ];
     }
