@@ -22,8 +22,8 @@ class GetPersonsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'start' => ['int', 'min:0']
-            //
+            'start' => ['int', 'min:0'],
+            'count' => ['int', 'min:1'],
         ];
     }
 }

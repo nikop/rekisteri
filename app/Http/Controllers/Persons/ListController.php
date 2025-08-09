@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Persons;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GetPersonsRequest;
+use App\Models\Person;
 
 class ListController extends Controller
 {
@@ -12,6 +13,10 @@ class ListController extends Controller
     {
         $vars = $request->validated();
 
-        dd($vars);
+        $result = Person::query()->get();
+
+        return [
+            'items' => $result,
+        ];
     }
 }

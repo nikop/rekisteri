@@ -11,7 +11,7 @@ class AddPersonRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class AddPersonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'first_name' => ['required', 'string', 'min:1'],
+            'last_name' => ['required', 'string', 'min:1'],
+            'phone' => ['string', 'min:1'],
+            'email' => ['email', 'min:1'],
+            'address' => ['string', 'min:1'],
+            'postcode' => ['string', 'min:1'],
+            'city' => ['string', 'min:1'],
+            'country' => ['string', 'min:1'],
+            'note' => ['string'],
         ];
     }
 }
