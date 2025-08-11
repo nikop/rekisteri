@@ -24,6 +24,8 @@ class GetPersonsRequest extends FormRequest
         return [
             'start' => ['int', 'min:0'],
             'count' => ['int', 'min:1'],
+            'filter.first_name' => ['string'],
+            'filter.last_name' => ['string'],
         ];
     }
 }
