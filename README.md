@@ -4,8 +4,8 @@
 
 Install depenecies by running following commands
 
-> composer install
-> npm install
+> composer install  
+> npm install  
 
 Additionally .env can be created to change database settings, defaults to SQLite database.
 
@@ -14,6 +14,8 @@ Additionally .env can be created to change database settings, defaults to SQLite
 > php artisan migrate
 
 ## Generate Test Data
+
+Random example data can be generated with following command
 
 > php artisan db:seed 
 
@@ -33,8 +35,25 @@ Parameters supported
 | ------------------ | -------------------------- |
 | start              | Start offset for paging    |
 | count              | How many entries to return |
-| filter[first_name] | Seach by first name        |
-| filter[last_name]  | Seach by last name         |
+| filter[first_name] | Search by first name       |
+| filter[last_name]  | Search by last name        |
+
+Example response:
+
+```
+{
+  "total": 1,
+  "items": [
+    {
+      "id": 1,
+      "first_name": "Anu",
+      "last_name": "Laakkonen",
+      "created_at": "2025-08-11T09:00:00.000000Z",
+      "updated_at": "2025-08-11T09:00:00.000000Z"
+    }
+  ]
+}
+```
 
 ## Get Person
 
@@ -82,3 +101,20 @@ Accepts json with updated fields
 ## Add Person
 
 POST /api/persons
+
+Accepts json with fields, at least first & last name are required.
+
+```
+{
+  "first_name": "Anu",
+  "last_name": "Laakkonen"
+}
+```
+
+Response on Success includes id
+
+```
+{
+  "id": 1
+}
+```
