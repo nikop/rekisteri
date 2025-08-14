@@ -9,14 +9,14 @@ Install depenecies by running following commands
 
 ## Setup
 
-> cp .env.example .env
-> php artisan key:generate
+> cp .env.example .env  
+> php artisan key:generate  
 
 Additionally .env can change database settings, defaults to SQLite database.
 
 ## Create Database
 
-> php artisan migrate
+> php artisan migrate  
 
 ## Generate Test Data
 
