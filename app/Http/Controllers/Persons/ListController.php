@@ -16,11 +16,32 @@ class ListController extends Controller
         $total = $this->addSearchQuery(Person::query(), $vars)
             ->count();
 
-        $result =  $this->addSearchQuery(
-            Person::query()
-                ->offset($vars['start'] ?? 0)
-                ->limit($vars['count'] ?? 10), $vars)
-            ->get(['id', 'first_name', 'last_name', 'created_at', 'updated_at']);
+        
+        $query = $this->addSearchQuery(Person::query(), $vars)
+            ->offset($vars['start'] ?? 0)
+            ->limit($vars['count'] ?? 10);
+
+        $dir = empty($vars['desc']) ? 'asc' : 'desc';
+
+        switch ($vars['order'] ?? 'id') {
+            case 'name':
+                $query->orderBy('last_name', $dir);
+                $query->orderBy('first_name', $dir);
+                break;
+            case 'id':
+                $query->orderBy('id', $dir);
+                break;
+            case 'created':
+                $query->orderBy('created_at', $dir);
+                break;
+            case 'updated':
+                $query->orderBy('updated_at', $dir);
+                break;
+            default:
+                break;
+        }
+        
+        $result = $query->get(['id', 'first_name', 'last_name', 'created_at', 'updated_at']);
 
         return [
             'total' => $total,

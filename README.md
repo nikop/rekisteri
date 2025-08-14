@@ -40,6 +40,8 @@ Parameters supported
 | ------------------ | -------------------------- |
 | start              | Start offset for paging    |
 | count              | How many entries to return |
+| order              | Column for sorting of entries (supported values: name, updated, created) |
+| desc               | Whatever to return entries in descending order |
 | filter[first_name] | Search by first name       |
 | filter[last_name]  | Search by last name        |
 
