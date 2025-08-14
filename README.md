@@ -7,7 +7,12 @@ Install depenecies by running following commands
 > composer install  
 > npm install  
 
-Additionally .env can be created to change database settings, defaults to SQLite database.
+## Setup
+
+> cp .env.example .env
+> php artisan key:generate
+
+Additionally .env can change database settings, defaults to SQLite database.
 
 ## Create Database
 
